@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import './globals.css';
+import styles from './globals.module.css';
 
 export const metadata: Metadata = {
   title: 'Mosy — Airdrop Enthusiast & Digital Artist',
