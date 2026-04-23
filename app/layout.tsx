@@ -27,12 +27,12 @@ export default function RootLayout({
             scroll-behavior: smooth;
           }
 
-          body {
-            background: #0a0e27;
-            color: #e0e0e0;
-            font-family: 'Courier New', monospace;
-            overflow-x: hidden;
-          }
+  body {
+    background: #0a0e27 !important;
+    color: #e0e0e0 !important;
+    font-family: 'Courier New', monospace !important;
+    overflow-x: hidden !important;
+  }
 
           @keyframes glow {
             0%, 100% {
@@ -121,11 +121,11 @@ export default function RootLayout({
           .pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
           .float { animation: float 3s ease-in-out infinite; }
 
-          .cyber-bg {
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%);
-            position: relative;
-            overflow: hidden;
-          }
+  .cyber-bg {
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%) !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
 
           .cyber-bg::before {
             content: '';
