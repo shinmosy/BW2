@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import { StyleProvider } from "./components/StyleProvider"
 
 export const metadata: Metadata = {
   title: "Cyber Portfolio v2",
@@ -13,11 +12,265 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <style>{`
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+
+          html {
+            scroll-behavior: smooth;
+          }
+
+          body {
+            background: #0a0e27;
+            color: #e0e0e0;
+            font-family: 'Courier New', monospace;
+            overflow-x: hidden;
+          }
+
+          @keyframes glow {
+            0%, 100% {
+              text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88;
+            }
+            50% {
+              text-shadow: 0 0 20px #00ff88, 0 0 30px #00ff88, 0 0 40px #00ff88;
+            }
+          }
+
+          @keyframes glitch {
+            0% {
+              clip-path: inset(40% 0 61% 0);
+              transform: translate(-2px, -2px);
+            }
+            20% {
+              clip-path: inset(92% 0 1% 0);
+              transform: translate(2px, 2px);
+            }
+            40% {
+              clip-path: inset(43% 0 1% 0);
+              transform: translate(-2px, 2px);
+            }
+            60% {
+              clip-path: inset(25% 0 58% 0);
+              transform: translate(2px, -2px);
+            }
+            80% {
+              clip-path: inset(54% 0 7% 0);
+              transform: translate(-2px, -2px);
+            }
+            100% {
+              clip-path: inset(58% 0 43% 0);
+              transform: translate(2px, 2px);
+            }
+          }
+
+          @keyframes glitch-color {
+            0% { color: #00ff88; }
+            25% { color: #0088ff; }
+            50% { color: #ff0088; }
+            75% { color: #00ff88; }
+            100% { color: #00ff88; }
+          }
+
+          @keyframes scanlines {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(10px); }
+          }
+
+          @keyframes neon-border {
+            0%, 100% {
+              box-shadow: 0 0 10px #00ff88, inset 0 0 10px rgba(0, 255, 136, 0.1);
+            }
+            50% {
+              box-shadow: 0 0 20px #00ff88, inset 0 0 20px rgba(0, 255, 136, 0.2);
+            }
+          }
+
+          @keyframes matrix-rain {
+            0% {
+              transform: translateY(-100%);
+              opacity: 1;
+            }
+            100% {
+              transform: translateY(100vh);
+              opacity: 0;
+            }
+          }
+
+          @keyframes pulse-glow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+          }
+
+          @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+          }
+
+          .glow-text { animation: glow 2s ease-in-out infinite; }
+          .glitch-text { position: relative; animation: glitch 0.3s infinite; }
+          .glitch-color { animation: glitch-color 3s ease-in-out infinite; }
+          .neon-border { border: 2px solid #00ff88; animation: neon-border 2s ease-in-out infinite; }
+          .scanline { position: fixed; top: 0; left: 0; width: 100%; height: 2px; background: rgba(0, 255, 136, 0.3); animation: scanlines 8s linear infinite; pointer-events: none; z-index: 9999; }
+          .pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+          .float { animation: float 3s ease-in-out infinite; }
+
+          .cyber-bg {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%);
+            position: relative;
+            overflow: hidden;
+          }
+
+          .cyber-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+          }
+
+          .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+          }
+
+          .matrix-char {
+            position: absolute;
+            color: rgba(0, 255, 136, 0.1);
+            font-size: 14px;
+            font-weight: bold;
+            animation: matrix-rain linear infinite;
+          }
+
+          .hologram-card {
+            position: relative;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(0, 136, 255, 0.05) 100%);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            transition: all 0.3s ease;
+          }
+
+          .hologram-card:hover {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 136, 255, 0.1) 100%);
+            border-color: rgba(0, 255, 136, 0.5);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3), inset 0 0 20px rgba(0, 255, 136, 0.1);
+          }
+
+          .glitch-border {
+            position: relative;
+            border: 2px solid #00ff88;
+          }
+
+          .glitch-border::before,
+          .glitch-border::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border: 2px solid #00ff88;
+            opacity: 0;
+          }
+
+          .glitch-border:hover::before {
+            animation: glitch 0.3s infinite;
+            left: 2px;
+            top: 2px;
+            opacity: 0.8;
+            color: #0088ff;
+          }
+
+          .glitch-border:hover::after {
+            animation: glitch 0.3s infinite reverse;
+            left: -2px;
+            top: -2px;
+            opacity: 0.8;
+            color: #ff0088;
+          }
+
+          .neon-text {
+            color: #00ff88;
+            text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88;
+            letter-spacing: 2px;
+          }
+
+          .neon-text-blue {
+            color: #0088ff;
+            text-shadow: 0 0 10px #0088ff, 0 0 20px #0088ff, 0 0 30px #0088ff;
+            letter-spacing: 2px;
+          }
+
+          .cyber-btn {
+            position: relative;
+            padding: 12px 24px;
+            border: 2px solid #00ff88;
+            background: transparent;
+            color: #00ff88;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+          }
+
+          .cyber-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #00ff88;
+            transition: left 0.3s ease;
+            z-index: -1;
+          }
+
+          .cyber-btn:hover {
+            color: #000;
+            box-shadow: 0 0 20px #00ff88;
+          }
+
+          .cyber-btn:hover::before {
+            left: 0;
+          }
+
+          .cyber-input {
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            color: #e0e0e0;
+            padding: 10px 12px;
+            font-family: 'Courier New', monospace;
+            transition: all 0.3s ease;
+          }
+
+          .cyber-input:focus {
+            outline: none;
+            border-color: #00ff88;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3), inset 0 0 10px rgba(0, 255, 136, 0.1);
+            background: rgba(0, 255, 136, 0.1);
+          }
+
+          .cyber-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #00ff88, transparent);
+            margin: 20px 0;
+          }
+        `}</style>
+      </head>
       <body className="cyber-bg">
-        <StyleProvider>
-          <div className="scanline"></div>
-          {children}
-        </StyleProvider>
+        <div className="scanline"></div>
+        {children}
       </body>
     </html>
   )
