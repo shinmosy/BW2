@@ -179,7 +179,6 @@ export default function Contact() {
               value={formData.name}
               onChange={handleChange}
               placeholder="Your name"
-              required
             />
           </div>
 
@@ -192,7 +191,6 @@ export default function Contact() {
               value={formData.email}
               onChange={handleChange}
               placeholder="your@email.com"
-              required
             />
           </div>
 
@@ -204,7 +202,6 @@ export default function Contact() {
               value={formData.message}
               onChange={handleChange}
               placeholder="Tell me about your project..."
-              required
             />
           </div>
 
