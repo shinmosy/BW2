@@ -1,138 +1,120 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+
 export default function Hero() {
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    setIsVisible(true)
+  }, [])
+
   return (
-    <section id="hero" style={{
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      paddingTop: '5rem',
-      paddingLeft: '1rem',
-      paddingRight: '1rem',
-      position: 'relative',
-      zIndex: 10,
-    }}>
-      <div style={{
-        textAlign: 'center',
-        maxWidth: '56rem',
-      }}>
-        <div style={{ marginBottom: '2rem' }}>
-          <div style={{
-            width: '128px',
-            height: '128px',
-            margin: '0 auto 2rem',
-            borderRadius: '50%',
-            border: '2px solid #00ff88',
-            padding: '4px',
-            animation: 'float 3s ease-in-out infinite',
-            boxShadow: '0 0 10px #00ff88, inset 0 0 10px rgba(0, 255, 136, 0.1)',
-          }}>
-            <div style={{
-              width: '100%',
-              height: '100%',
-              borderRadius: '50%',
-              background: 'linear-gradient(135deg, #00ff88 0%, #0088ff 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '2rem',
-              fontWeight: 'bold',
-              color: '#000',
-            }}>
-              M
-            </div>
-          </div>
+    <section className="hero">
+      <style>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes slideInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .hero-content {
+          animation: ${isVisible ? 'fadeInUp 0.8s ease-out' : 'none'};
+        }
+
+        .hero-badge {
+          display: inline-block;
+          padding: 8px 16px;
+          background: rgba(85, 179, 255, 0.1);
+          border: 1px solid rgba(85, 179, 255, 0.3);
+          border-radius: 20px;
+          color: #55b3ff;
+          font-size: 14px;
+          font-weight: 500;
+          margin-bottom: 24px;
+          animation: ${isVisible ? 'slideInLeft 0.8s ease-out' : 'none'};
+        }
+
+        .hero h1 {
+          font-size: clamp(40px, 8vw, 72px);
+          font-weight: 700;
+          line-height: 1.1;
+          margin-bottom: 16px;
+          background: linear-gradient(135deg, #f9f9f9 0%, #cecece 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .hero-subtitle {
+          font-size: 18px;
+          color: #9c9c9d;
+          max-width: 600px;
+          margin: 0 auto 32px;
+          line-height: 1.6;
+        }
+
+        .cta-group {
+          display: flex;
+          gap: 16px;
+          justify-content: center;
+          flex-wrap: wrap;
+          margin-bottom: 64px;
+        }
+
+        .scroll-indicator {
+          margin-top: 48px;
+          animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(10px);
+          }
+        }
+
+        .scroll-indicator svg {
+          width: 24px;
+          height: 24px;
+          color: #6a6b6c;
+        }
+      `}</style>
+
+      <div className="hero-content">
+        <div className="hero-badge">✨ Welcome to my portfolio</div>
+        <h1>Full-Stack Developer & Creative Technologist</h1>
+        <p className="hero-subtitle">
+          I craft elegant digital experiences with modern web technologies. Specializing in React, Next.js, and scalable backend architectures. Let's build something amazing together.
+        </p>
+
+        <div className="cta-group">
+          <button className="btn-primary">View My Work</button>
+          <button className="btn-secondary">Download Resume</button>
         </div>
 
-        <h1 style={{
-          fontSize: 'clamp(2rem, 10vw, 4rem)',
-          fontWeight: 'bold',
-          marginBottom: '1rem',
-          color: '#00ff88',
-          textShadow: '0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88',
-          animation: 'glow 2s ease-in-out infinite',
-        }}>
-          CYBER PORTFOLIO
-        </h1>
-        
-        <div style={{
-          height: '1px',
-          background: 'linear-gradient(90deg, transparent, #00ff88, transparent)',
-          margin: '1.25rem 0',
-        }}></div>
-
-        <p style={{
-          fontSize: 'clamp(1rem, 3vw, 1.5rem)',
-          color: '#00ff88',
-          marginBottom: '2rem',
-          fontFamily: 'Courier New, monospace',
-        }}>
-          &gt; Welcome to the future
-        </p>
-
-        <p style={{
-          fontSize: '1.125rem',
-          color: '#a0a0a0',
-          marginBottom: '3rem',
-          maxWidth: '42rem',
-          margin: '0 auto 3rem',
-        }}>
-          Full-stack developer crafting digital experiences with cutting-edge technology and futuristic design.
-        </p>
-
-        <div style={{
-          display: 'flex',
-          gap: '1rem',
-          justifyContent: 'center',
-          flexWrap: 'wrap',
-        }}>
-          <button style={{
-            position: 'relative',
-            padding: '12px 24px',
-            border: '2px solid #00ff88',
-            background: 'transparent',
-            color: '#00ff88',
-            fontFamily: 'Courier New, monospace',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease',
-            overflow: 'hidden',
-          }} onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
-            const target = e.currentTarget as HTMLButtonElement;
-            target.style.color = '#000';
-            target.style.boxShadow = '0 0 20px #00ff88';
-            target.style.background = '#00ff88';
-          }} onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
-            const target = e.currentTarget as HTMLButtonElement;
-            target.style.color = '#00ff88';
-            target.style.boxShadow = 'none';
-            target.style.background = 'transparent';
-          }}>
-            View Work
-          </button>
-          <button style={{
-            position: 'relative',
-            padding: '12px 24px',
-            border: '2px solid #0088ff',
-            background: 'transparent',
-            color: '#0088ff',
-            fontFamily: 'Courier New, monospace',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease',
-            overflow: 'hidden',
-          }} onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
-            const target = e.currentTarget as HTMLButtonElement;
-            target.style.color = '#000';
-            target.style.boxShadow = '0 0 20px #0088ff';
-            target.style.background = '#0088ff';
-          }} onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
-            const target = e.currentTarget as HTMLButtonElement;
-            target.style.color = '#0088ff';
-            target.style.boxShadow = 'none';
-            target.style.background = 'transparent';
-          }}>
-            Get In Touch
-          </button>
+        <div className="scroll-indicator">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M12 5v14M19 12l-7 7-7-7" />
+          </svg>
         </div>
       </div>
     </section>

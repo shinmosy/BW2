@@ -1,104 +1,125 @@
 'use client'
 
+import { useState } from 'react'
+
+const skillCategories = [
+  {
+    title: 'Frontend',
+    skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Redux'],
+    icon: '🎨',
+  },
+  {
+    title: 'Backend',
+    skills: ['Node.js', 'Express', 'PostgreSQL', 'MongoDB', 'REST APIs', 'GraphQL'],
+    icon: '⚙️',
+  },
+  {
+    title: 'DevOps & Tools',
+    skills: ['Docker', 'AWS', 'Vercel', 'GitHub Actions', 'Git', 'CI/CD'],
+    icon: '🚀',
+  },
+]
+
 export default function Skills() {
-  const skills = [
-    { category: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'] },
-    { category: 'Backend', items: ['Node.js', 'Express', 'PostgreSQL', 'MongoDB'] },
-    { category: 'Tools', items: ['Git', 'Docker', 'AWS', 'Vercel'] },
-  ]
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
-    <section id="skills" style={{
-      paddingTop: '5rem',
-      paddingBottom: '5rem',
-      paddingLeft: '1rem',
-      paddingRight: '1rem',
-      position: 'relative',
-      zIndex: 10,
-    }}>
-      <div style={{
-        maxWidth: '1152px',
-        margin: '0 auto',
-      }}>
-        <h2 style={{
-          fontSize: '2rem',
-          fontWeight: 'bold',
-          marginBottom: '1rem',
-          textAlign: 'center',
-          color: '#00ff88',
-          textShadow: '0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88',
-          animation: 'glow 2s ease-in-out infinite',
-        }}>
-          SKILLS
-        </h2>
-        <div style={{
-          height: '1px',
-          background: 'linear-gradient(90deg, transparent, #00ff88, transparent)',
-          margin: '1.25rem 0',
-        }}></div>
+    <section id="skills">
+      <style>{`
+        .skills-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 24px;
+          margin-top: 48px;
+        }
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '2rem',
-          marginTop: '3rem',
-        }}>
-          {skills.map((skill) => (
-            <div key={skill.category} style={{
-              position: 'relative',
-              background: 'linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(0, 136, 255, 0.05) 100%)',
-              border: '1px solid rgba(0, 255, 136, 0.2)',
-              transition: 'all 0.3s ease',
-              padding: '1.5rem',
-              borderRadius: '4px',
-              cursor: 'pointer',
-            }} onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 136, 255, 0.1) 100%)';
-              e.currentTarget.style.borderColor = 'rgba(0, 255, 136, 0.5)';
-              e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 255, 136, 0.3), inset 0 0 20px rgba(0, 255, 136, 0.1)';
-            }} onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(0, 136, 255, 0.05) 100%)';
-              e.currentTarget.style.borderColor = 'rgba(0, 255, 136, 0.2)';
-              e.currentTarget.style.boxShadow = 'none';
-            }}>
-              <h3 style={{
-                fontSize: '1.25rem',
-                fontWeight: 'bold',
-                color: '#00ff88',
-                marginBottom: '1rem',
-                textShadow: '0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88',
-                letterSpacing: '2px',
-              }}>
-                {skill.category}
-              </h3>
-              <div style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '0.5rem',
-              }}>
-                {skill.items.map((item) => (
-                  <span key={item} style={{
-                    paddingLeft: '0.75rem',
-                    paddingRight: '0.75rem',
-                    paddingTop: '0.25rem',
-                    paddingBottom: '0.25rem',
-                    border: '1px solid rgba(0, 255, 136, 0.5)',
-                    fontSize: '0.875rem',
-                    borderRadius: '4px',
-                    transition: 'all 0.3s ease',
-                    cursor: 'pointer',
-                  }} onMouseEnter={(e: React.MouseEvent<HTMLSpanElement>) => {
-                    e.currentTarget.style.background = 'rgba(0, 255, 136, 0.1)';
-                  }} onMouseLeave={(e: React.MouseEvent<HTMLSpanElement>) => {
-                    e.currentTarget.style.background = 'transparent';
-                  }}>
-                    {item}
-                  </span>
-                ))}
-              </div>
+        .skill-card {
+          background: #101111;
+          border: 1px solid rgba(255, 255, 255, 0.06);
+          border-radius: 12px;
+          padding: 32px;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          cursor: pointer;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .skill-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(85, 179, 255, 0.1), transparent);
+          transition: left 0.5s ease;
+        }
+
+        .skill-card:hover::before {
+          left: 100%;
+        }
+
+        .skill-card:hover {
+          border-color: rgba(85, 179, 255, 0.3);
+          background: rgba(85, 179, 255, 0.05);
+          transform: translateY(-8px);
+          box-shadow: 0 12px 24px rgba(85, 179, 255, 0.1);
+        }
+
+        .skill-icon {
+          font-size: 32px;
+          margin-bottom: 16px;
+        }
+
+        .skill-card h3 {
+          margin-bottom: 16px;
+          color: #f9f9f9;
+        }
+
+        .skill-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+
+        .skill-tag {
+          display: inline-block;
+          padding: 6px 12px;
+          background: rgba(85, 179, 255, 0.1);
+          border: 1px solid rgba(85, 179, 255, 0.2);
+          border-radius: 6px;
+          color: #55b3ff;
+          font-size: 12px;
+          font-weight: 500;
+          transition: all 0.2s ease;
+        }
+
+        .skill-card:hover .skill-tag {
+          background: rgba(85, 179, 255, 0.2);
+          border-color: rgba(85, 179, 255, 0.4);
+        }
+      `}</style>
+
+      <h2>Skills & Expertise</h2>
+      <div className="skills-grid">
+        {skillCategories.map((category, index) => (
+          <div
+            key={index}
+            className="skill-card"
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+            <div className="skill-icon">{category.icon}</div>
+            <h3>{category.title}</h3>
+            <div className="skill-tags">
+              {category.skills.map((skill, i) => (
+                <span key={i} className="skill-tag">
+                  {skill}
+                </span>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   )

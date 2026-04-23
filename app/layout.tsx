@@ -131,22 +131,17 @@ const globalStyles = `
     margin: 0 auto;
   }
 
-  .hero {
-    padding: 120px 20px;
+  section h2 {
     text-align: center;
   }
 
-  .hero h1 {
-    margin-bottom: 16px;
-  }
-
-  .hero p {
-    font-size: 18px;
-    color: #9c9c9d;
-    margin-bottom: 32px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+  .hero {
+    padding: 120px 20px;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .cta-group {
