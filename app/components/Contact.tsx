@@ -14,6 +14,7 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    console.log('Form submitted!', formData)
     setLoading(true)
 
     // Simulate form submission
@@ -168,7 +169,7 @@ export default function Contact() {
 
         {submitted && <div className="success-message">✓ Message sent successfully! I'll get back to you soon.</div>}
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} noValidate>
           <div className="form-group">
             <label htmlFor="name">Name</label>
             <input
