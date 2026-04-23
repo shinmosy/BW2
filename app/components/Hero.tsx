@@ -34,6 +34,15 @@ export default function Hero() {
           }
         }
 
+        @keyframes glow {
+          0%, 100% {
+            box-shadow: 0 0 20px rgba(85, 179, 255, 0.3);
+          }
+          50% {
+            box-shadow: 0 0 40px rgba(85, 179, 255, 0.5);
+          }
+        }
+
         .hero-content {
           animation: ${isVisible ? 'fadeInUp 0.8s ease-out' : 'none'};
         }
@@ -49,6 +58,13 @@ export default function Hero() {
           font-weight: 500;
           margin-bottom: 24px;
           animation: ${isVisible ? 'slideInLeft 0.8s ease-out' : 'none'};
+          transition: all 0.3s ease;
+        }
+
+        .hero-badge:hover {
+          background: rgba(85, 179, 255, 0.2);
+          border-color: rgba(85, 179, 255, 0.5);
+          animation: glow 2s ease-in-out infinite;
         }
 
         .hero h1 {
@@ -60,6 +76,14 @@ export default function Hero() {
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
+          transition: all 0.3s ease;
+        }
+
+        .hero h1:hover {
+          background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
         }
 
         .hero-subtitle {
@@ -68,6 +92,11 @@ export default function Hero() {
           max-width: 600px;
           margin: 0 auto 32px;
           line-height: 1.6;
+          transition: color 0.3s ease;
+        }
+
+        .hero-subtitle:hover {
+          color: #cecece;
         }
 
         .cta-group {
@@ -81,6 +110,12 @@ export default function Hero() {
         .scroll-indicator {
           margin-top: 48px;
           animation: bounce 2s infinite;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .scroll-indicator:hover {
+          transform: scale(1.2);
         }
 
         @keyframes bounce {
@@ -96,6 +131,11 @@ export default function Hero() {
           width: 24px;
           height: 24px;
           color: #6a6b6c;
+          transition: color 0.3s ease;
+        }
+
+        .scroll-indicator:hover svg {
+          color: #55b3ff;
         }
       `}</style>
 
@@ -111,7 +151,7 @@ export default function Hero() {
           <button className="btn-secondary">Download Resume</button>
         </div>
 
-        <div className="scroll-indicator">
+        <div className="scroll-indicator" onClick={() => window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M12 5v14M19 12l-7 7-7-7" />
           </svg>
