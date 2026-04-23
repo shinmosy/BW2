@@ -1,12 +1,231 @@
 'use client'
 
-import type { Metadata } from "next"
+const globalStyles = `
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-// Metadata harus di separate file untuk client components
-// export const metadata: Metadata = {
-//   title: "Cyber Portfolio v2",
-//   description: "Futuristic portfolio with cyber aesthetics",
-// }
+  html {
+    scroll-behavior: smooth;
+    background: #07080a;
+  }
+
+  body {
+    background: #07080a;
+    color: #f9f9f9;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+    font-feature-settings: "calt", "kern", "liga", "ss03";
+    letter-spacing: 0.2px;
+  }
+
+  a {
+    color: #55b3ff;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  a:hover {
+    opacity: 0.7;
+  }
+
+  /* Typography */
+  h1 {
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: 0px;
+    margin-bottom: 24px;
+  }
+
+  h2 {
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1.17;
+    letter-spacing: 0.2px;
+    margin-bottom: 32px;
+  }
+
+  h3 {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: 0.2px;
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.2px;
+    color: #cecece;
+    margin-bottom: 16px;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    display: inline-block;
+    padding: 12px 32px;
+    background: hsla(0, 0%, 100%, 0.815);
+    color: #18191a;
+    border: none;
+    border-radius: 86px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 0px 0px inset;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+    background: #ffffff;
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    padding: 12px 24px;
+    background: transparent;
+    color: #f9f9f9;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    box-shadow: rgba(0, 0, 0, 0.03) 0px 7px 3px;
+  }
+
+  .btn-secondary:hover {
+    opacity: 0.8;
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Cards */
+  .card {
+    background: #101111;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 32px;
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  }
+
+  /* Layout */
+  main {
+    position: relative;
+    z-index: 1;
+  }
+
+  section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero {
+    padding: 120px 20px;
+    text-align: center;
+  }
+
+  .hero h1 {
+    margin-bottom: 16px;
+  }
+
+  .hero p {
+    font-size: 18px;
+    color: #9c9c9d;
+    margin-bottom: 32px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-group {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(7, 8, 10, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 16px 20px;
+    z-index: 100;
+  }
+
+  nav .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav a {
+    color: #9c9c9d;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 24px;
+    transition: color 0.2s ease;
+  }
+
+  nav a:hover {
+    color: #f9f9f9;
+  }
+
+  main {
+    margin-top: 60px;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 40px;
+    }
+
+    h2 {
+      font-size: 32px;
+    }
+
+    section {
+      padding: 60px 20px;
+    }
+
+    .hero {
+      padding: 80px 20px;
+    }
+
+    .grid {
+      grid-template-columns: 1fr;
+    }
+
+    nav a {
+      margin: 0 12px;
+      font-size: 14px;
+    }
+  }
+`
 
 export default function RootLayout({
   children,
@@ -16,264 +235,27 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <style>{`
-          * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-          }
-
-  html {
-    scroll-behavior: smooth;
-    background: #0a0e27 !important;
-  }
-
-  body {
-    color: #e0e0e0 !important;
-    font-family: 'Courier New', monospace !important;
-    overflow-x: hidden !important;
-  }
-
-          @keyframes glow {
-            0%, 100% {
-              text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88;
-            }
-            50% {
-              text-shadow: 0 0 20px #00ff88, 0 0 30px #00ff88, 0 0 40px #00ff88;
-            }
-          }
-
-          @keyframes glitch {
-            0% {
-              clip-path: inset(40% 0 61% 0);
-              transform: translate(-2px, -2px);
-            }
-            20% {
-              clip-path: inset(92% 0 1% 0);
-              transform: translate(2px, 2px);
-            }
-            40% {
-              clip-path: inset(43% 0 1% 0);
-              transform: translate(-2px, 2px);
-            }
-            60% {
-              clip-path: inset(25% 0 58% 0);
-              transform: translate(2px, -2px);
-            }
-            80% {
-              clip-path: inset(54% 0 7% 0);
-              transform: translate(-2px, -2px);
-            }
-            100% {
-              clip-path: inset(58% 0 43% 0);
-              transform: translate(2px, 2px);
-            }
-          }
-
-          @keyframes glitch-color {
-            0% { color: #00ff88; }
-            25% { color: #0088ff; }
-            50% { color: #ff0088; }
-            75% { color: #00ff88; }
-            100% { color: #00ff88; }
-          }
-
-          @keyframes scanlines {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(10px); }
-          }
-
-          @keyframes neon-border {
-            0%, 100% {
-              box-shadow: 0 0 10px #00ff88, inset 0 0 10px rgba(0, 255, 136, 0.1);
-            }
-            50% {
-              box-shadow: 0 0 20px #00ff88, inset 0 0 20px rgba(0, 255, 136, 0.2);
-            }
-          }
-
-          @keyframes matrix-rain {
-            0% {
-              transform: translateY(-100%);
-              opacity: 1;
-            }
-            100% {
-              transform: translateY(100vh);
-              opacity: 0;
-            }
-          }
-
-          @keyframes pulse-glow {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-          }
-
-          @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-          }
-
-          .glow-text { animation: glow 2s ease-in-out infinite; }
-          .glitch-text { position: relative; animation: glitch 0.3s infinite; }
-          .glitch-color { animation: glitch-color 3s ease-in-out infinite; }
-          .neon-border { border: 2px solid #00ff88; animation: neon-border 2s ease-in-out infinite; }
-          .scanline { position: fixed; top: 0; left: 0; width: 100%; height: 2px; background: rgba(0, 255, 136, 0.3); animation: scanlines 8s linear infinite; pointer-events: none; z-index: 9999; }
-          .pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
-          .float { animation: float 3s ease-in-out infinite; }
-
-  .cyber-bg {
-    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%) !important;
-    position: relative !important;
-    overflow: hidden !important;
-  }
-
-          .cyber-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 50%);
-            pointer-events: none;
-          }
-
-          .matrix-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-          }
-
-          .matrix-char {
-            position: absolute;
-            color: rgba(0, 255, 136, 0.1);
-            font-size: 14px;
-            font-weight: bold;
-            animation: matrix-rain linear infinite;
-          }
-
-          .hologram-card {
-            position: relative;
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(0, 136, 255, 0.05) 100%);
-            border: 1px solid rgba(0, 255, 136, 0.2);
-            transition: all 0.3s ease;
-          }
-
-          .hologram-card:hover {
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 136, 255, 0.1) 100%);
-            border-color: rgba(0, 255, 136, 0.5);
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3), inset 0 0 20px rgba(0, 255, 136, 0.1);
-          }
-
-          .glitch-border {
-            position: relative;
-            border: 2px solid #00ff88;
-          }
-
-          .glitch-border::before,
-          .glitch-border::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            border: 2px solid #00ff88;
-            opacity: 0;
-          }
-
-          .glitch-border:hover::before {
-            animation: glitch 0.3s infinite;
-            left: 2px;
-            top: 2px;
-            opacity: 0.8;
-            color: #0088ff;
-          }
-
-          .glitch-border:hover::after {
-            animation: glitch 0.3s infinite reverse;
-            left: -2px;
-            top: -2px;
-            opacity: 0.8;
-            color: #ff0088;
-          }
-
-          .neon-text {
-            color: #00ff88;
-            text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88;
-            letter-spacing: 2px;
-          }
-
-          .neon-text-blue {
-            color: #0088ff;
-            text-shadow: 0 0 10px #0088ff, 0 0 20px #0088ff, 0 0 30px #0088ff;
-            letter-spacing: 2px;
-          }
-
-          .cyber-btn {
-            position: relative;
-            padding: 12px 24px;
-            border: 2px solid #00ff88;
-            background: transparent;
-            color: #00ff88;
-            font-family: 'Courier New', monospace;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            overflow: hidden;
-          }
-
-          .cyber-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: #00ff88;
-            transition: left 0.3s ease;
-            z-index: -1;
-          }
-
-          .cyber-btn:hover {
-            color: #000;
-            box-shadow: 0 0 20px #00ff88;
-          }
-
-          .cyber-btn:hover::before {
-            left: 0;
-          }
-
-          .cyber-input {
-            background: rgba(0, 255, 136, 0.05);
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            color: #e0e0e0;
-            padding: 10px 12px;
-            font-family: 'Courier New', monospace;
-            transition: all 0.3s ease;
-          }
-
-          .cyber-input:focus {
-            outline: none;
-            border-color: #00ff88;
-            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3), inset 0 0 10px rgba(0, 255, 136, 0.1);
-            background: rgba(0, 255, 136, 0.1);
-          }
-
-          .cyber-line {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #00ff88, transparent);
-            margin: 20px 0;
-          }
-        `}</style>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cyber Portfolio v2</title>
+        <meta name="description" content="Futuristic portfolio with cyber aesthetics" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <style dangerouslySetInnerHTML={{ __html: globalStyles }} />
       </head>
-      <body className="cyber-bg">
-        <div className="scanline"></div>
-        {children}
+      <body>
+        <nav>
+          <div className="container">
+            <div style={{ fontSize: '20px', fontWeight: '600', color: '#f9f9f9' }}>M</div>
+            <div style={{ display: 'flex', gap: '24px' }}>
+              <a href="#work">Work</a>
+              <a href="#skills">Skills</a>
+              <a href="#contact">Contact</a>
+            </div>
+          </div>
+        </nav>
+        <main>
+          {children}
+        </main>
       </body>
     </html>
   )
