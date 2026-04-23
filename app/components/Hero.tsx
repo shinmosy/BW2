@@ -2,10 +2,10 @@
 
 export default function Hero() {
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center pt-20 px-4">
+    <section id="hero" className="min-h-screen flex items-center justify-center pt-20 px-4 relative z-10">
       <div className="text-center max-w-4xl">
         <div className="mb-8">
-          <div className="w-32 h-32 mx-auto mb-8 rounded-full border-2 border-[#00ff88] p-1 neon-border">
+          <div className="w-32 h-32 mx-auto mb-8 rounded-full border-2 border-[#00ff88] p-1 neon-border float">
             <div className="w-full h-full rounded-full bg-gradient-to-br from-[#00ff88] to-[#0088ff] flex items-center justify-center text-4xl font-bold">
               M
             </div>
@@ -16,6 +16,8 @@ export default function Hero() {
           CYBER PORTFOLIO
         </h1>
         
+        <div className="cyber-line"></div>
+
         <p className="text-xl md:text-2xl text-[#00ff88] mb-8 font-mono">
           &gt; Welcome to the future
         </p>
@@ -25,10 +27,10 @@ export default function Hero() {
         </p>
 
         <div className="flex gap-4 justify-center flex-wrap">
-          <button className="px-8 py-3 border-2 border-[#00ff88] text-[#00ff88] hover:bg-[#00ff88] hover:text-black transition font-mono">
+          <button className="cyber-btn">
             View Work
           </button>
-          <button className="px-8 py-3 border-2 border-[#0088ff] text-[#0088ff] hover:bg-[#0088ff] hover:text-black transition font-mono">
+          <button className="cyber-btn" style={{ borderColor: '#0088ff', color: '#0088ff' }}>
             Get In Touch
           </button>
         </div>

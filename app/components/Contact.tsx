@@ -16,50 +16,51 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 px-4">
+    <section id="contact" className="py-20 px-4 relative z-10">
       <div className="max-w-2xl mx-auto">
-        <h2 className="text-4xl font-bold mb-12 glow-text text-center">CONTACT</h2>
+        <h2 className="text-4xl font-bold mb-4 glow-text text-center">CONTACT</h2>
+        <div className="cyber-line"></div>
 
-        <form onSubmit={handleSubmit} className="neon-border p-8 space-y-6">
+        <form onSubmit={handleSubmit} className="hologram-card p-8 space-y-6 rounded mt-12">
           <div>
-            <label className="block text-[#00ff88] mb-2 font-mono">Name</label>
+            <label className="block text-[#00ff88] mb-2 font-mono neon-text">Name</label>
             <input
               type="text"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full bg-black/50 border border-[#00ff88]/30 px-4 py-2 text-white focus:outline-none focus:border-[#00ff88] transition"
+              className="w-full cyber-input rounded"
               required
             />
           </div>
 
           <div>
-            <label className="block text-[#00ff88] mb-2 font-mono">Email</label>
+            <label className="block text-[#00ff88] mb-2 font-mono neon-text">Email</label>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full bg-black/50 border border-[#00ff88]/30 px-4 py-2 text-white focus:outline-none focus:border-[#00ff88] transition"
+              className="w-full cyber-input rounded"
               required
             />
           </div>
 
           <div>
-            <label className="block text-[#00ff88] mb-2 font-mono">Message</label>
+            <label className="block text-[#00ff88] mb-2 font-mono neon-text">Message</label>
             <textarea
               name="message"
               value={formData.message}
               onChange={handleChange}
               rows={5}
-              className="w-full bg-black/50 border border-[#00ff88]/30 px-4 py-2 text-white focus:outline-none focus:border-[#00ff88] transition"
+              className="w-full cyber-input rounded"
               required
             />
           </div>
 
           <button
             type="submit"
-            className="w-full px-8 py-3 border-2 border-[#00ff88] text-[#00ff88] hover:bg-[#00ff88] hover:text-black transition font-mono"
+            className="w-full cyber-btn rounded"
           >
             SEND MESSAGE
           </button>

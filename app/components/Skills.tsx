@@ -8,17 +8,18 @@ export default function Skills() {
   ]
 
   return (
-    <section id="skills" className="py-20 px-4">
+    <section id="skills" className="py-20 px-4 relative z-10">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold mb-12 glow-text text-center">SKILLS</h2>
+        <h2 className="text-4xl font-bold mb-4 glow-text text-center">SKILLS</h2>
+        <div className="cyber-line"></div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 mt-12">
           {skills.map((skill) => (
-            <div key={skill.category} className="neon-border p-6 hover:shadow-lg transition">
-              <h3 className="text-xl font-bold text-[#00ff88] mb-4">{skill.category}</h3>
+            <div key={skill.category} className="hologram-card p-6 rounded">
+              <h3 className="text-xl font-bold text-[#00ff88] mb-4 neon-text">{skill.category}</h3>
               <div className="flex flex-wrap gap-2">
                 {skill.items.map((item) => (
-                  <span key={item} className="px-3 py-1 border border-[#00ff88]/50 text-sm hover:bg-[#00ff88]/10 transition">
+                  <span key={item} className="px-3 py-1 border border-[#00ff88]/50 text-sm hover:bg-[#00ff88]/10 transition rounded">
                     {item}
                   </span>
                 ))}
