@@ -82,12 +82,12 @@ export default function Projects() {
                 textShadow: '0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88',
                 letterSpacing: '2px',
                 transition: 'all 0.3s ease',
-              }} onMouseEnter={(e) => {
-                e.target.style.color = '#0088ff';
-                e.target.style.textShadow = '0 0 10px #0088ff, 0 0 20px #0088ff, 0 0 30px #0088ff';
-              }} onMouseLeave={(e) => {
-                e.target.style.color = '#00ff88';
-                e.target.style.textShadow = '0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88';
+              }} onMouseEnter={(e: React.MouseEvent<HTMLHeadingElement>) => {
+                e.currentTarget.style.color = '#0088ff';
+                e.currentTarget.style.textShadow = '0 0 10px #0088ff, 0 0 20px #0088ff, 0 0 30px #0088ff';
+              }} onMouseLeave={(e: React.MouseEvent<HTMLHeadingElement>) => {
+                e.currentTarget.style.color = '#00ff88';
+                e.currentTarget.style.textShadow = '0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88';
               }}>
                 {project.title}
               </h3>

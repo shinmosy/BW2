@@ -82,13 +82,13 @@ export default function Contact() {
                 transition: 'all 0.3s ease',
                 borderRadius: '4px',
               }}
-              onFocus={(e) => {
+              onFocus={(e: React.FocusEvent<HTMLInputElement>) => {
                 e.target.style.outline = 'none';
                 e.target.style.borderColor = '#00ff88';
                 e.target.style.boxShadow = '0 0 10px rgba(0, 255, 136, 0.3), inset 0 0 10px rgba(0, 255, 136, 0.1)';
                 e.target.style.background = 'rgba(0, 255, 136, 0.1)';
               }}
-              onBlur={(e) => {
+              onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
                 e.target.style.borderColor = 'rgba(0, 255, 136, 0.3)';
                 e.target.style.boxShadow = 'none';
                 e.target.style.background = 'rgba(0, 255, 136, 0.05)';
@@ -123,13 +123,13 @@ export default function Contact() {
                 transition: 'all 0.3s ease',
                 borderRadius: '4px',
               }}
-              onFocus={(e) => {
+              onFocus={(e: React.FocusEvent<HTMLInputElement>) => {
                 e.target.style.outline = 'none';
                 e.target.style.borderColor = '#00ff88';
                 e.target.style.boxShadow = '0 0 10px rgba(0, 255, 136, 0.3), inset 0 0 10px rgba(0, 255, 136, 0.1)';
                 e.target.style.background = 'rgba(0, 255, 136, 0.1)';
               }}
-              onBlur={(e) => {
+              onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
                 e.target.style.borderColor = 'rgba(0, 255, 136, 0.3)';
                 e.target.style.boxShadow = 'none';
                 e.target.style.background = 'rgba(0, 255, 136, 0.05)';
@@ -165,13 +165,13 @@ export default function Contact() {
                 borderRadius: '4px',
                 resize: 'vertical',
               }}
-              onFocus={(e) => {
+              onFocus={(e: React.FocusEvent<HTMLTextAreaElement>) => {
                 e.target.style.outline = 'none';
                 e.target.style.borderColor = '#00ff88';
                 e.target.style.boxShadow = '0 0 10px rgba(0, 255, 136, 0.3), inset 0 0 10px rgba(0, 255, 136, 0.1)';
                 e.target.style.background = 'rgba(0, 255, 136, 0.1)';
               }}
-              onBlur={(e) => {
+              onBlur={(e: React.FocusEvent<HTMLTextAreaElement>) => {
                 e.target.style.borderColor = 'rgba(0, 255, 136, 0.3)';
                 e.target.style.boxShadow = 'none';
                 e.target.style.background = 'rgba(0, 255, 136, 0.05)';
@@ -196,12 +196,12 @@ export default function Contact() {
               borderRadius: '4px',
               fontWeight: 'bold',
             }}
-            onMouseEnter={(e) => {
+            onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
               e.currentTarget.style.color = '#000';
               e.currentTarget.style.boxShadow = '0 0 20px #00ff88';
               e.currentTarget.style.background = '#00ff88';
             }}
-            onMouseLeave={(e) => {
+            onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
               e.currentTarget.style.color = '#00ff88';
               e.currentTarget.style.boxShadow = 'none';
               e.currentTarget.style.background = 'transparent';

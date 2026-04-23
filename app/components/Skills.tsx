@@ -87,10 +87,10 @@ export default function Skills() {
                     borderRadius: '4px',
                     transition: 'all 0.3s ease',
                     cursor: 'pointer',
-                  }} onMouseEnter={(e) => {
-                    e.target.style.background = 'rgba(0, 255, 136, 0.1)';
-                  }} onMouseLeave={(e) => {
-                    e.target.style.background = 'transparent';
+                  }} onMouseEnter={(e: React.MouseEvent<HTMLSpanElement>) => {
+                    e.currentTarget.style.background = 'rgba(0, 255, 136, 0.1)';
+                  }} onMouseLeave={(e: React.MouseEvent<HTMLSpanElement>) => {
+                    e.currentTarget.style.background = 'transparent';
                   }}>
                     {item}
                   </span>

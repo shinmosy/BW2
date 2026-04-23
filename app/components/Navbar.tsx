@@ -37,10 +37,10 @@ export default function Navbar() {
           display: 'none',
           gap: '2rem',
         }} className="md:flex">
-          <a href="#hero" style={{ color: '#e0e0e0', textDecoration: 'none', fontFamily: 'Courier New, monospace', transition: 'all 0.3s ease' }} onMouseEnter={(e) => e.target.style.color = '#00ff88'} onMouseLeave={(e) => e.target.style.color = '#e0e0e0'}>Home</a>
-          <a href="#skills" style={{ color: '#e0e0e0', textDecoration: 'none', fontFamily: 'Courier New, monospace', transition: 'all 0.3s ease' }} onMouseEnter={(e) => e.target.style.color = '#00ff88'} onMouseLeave={(e) => e.target.style.color = '#e0e0e0'}>Skills</a>
-          <a href="#projects" style={{ color: '#e0e0e0', textDecoration: 'none', fontFamily: 'Courier New, monospace', transition: 'all 0.3s ease' }} onMouseEnter={(e) => e.target.style.color = '#00ff88'} onMouseLeave={(e) => e.target.style.color = '#e0e0e0'}>Projects</a>
-          <a href="#contact" style={{ color: '#e0e0e0', textDecoration: 'none', fontFamily: 'Courier New, monospace', transition: 'all 0.3s ease' }} onMouseEnter={(e) => e.target.style.color = '#00ff88'} onMouseLeave={(e) => e.target.style.color = '#e0e0e0'}>Contact</a>
+          <a href="#hero" style={{ color: '#e0e0e0', textDecoration: 'none', fontFamily: 'Courier New, monospace', transition: 'all 0.3s ease' }} onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.color = '#00ff88'} onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.color = '#e0e0e0'}>Home</a>
+          <a href="#skills" style={{ color: '#e0e0e0', textDecoration: 'none', fontFamily: 'Courier New, monospace', transition: 'all 0.3s ease' }} onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.color = '#00ff88'} onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.color = '#e0e0e0'}>Skills</a>
+          <a href="#projects" style={{ color: '#e0e0e0', textDecoration: 'none', fontFamily: 'Courier New, monospace', transition: 'all 0.3s ease' }} onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.color = '#00ff88'} onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.color = '#e0e0e0'}>Projects</a>
+          <a href="#contact" style={{ color: '#e0e0e0', textDecoration: 'none', fontFamily: 'Courier New, monospace', transition: 'all 0.3s ease' }} onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.color = '#00ff88'} onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.color = '#e0e0e0'}>Contact</a>
         </div>
 
         <button 
@@ -68,10 +68,10 @@ export default function Navbar() {
           borderTop: '1px solid rgba(0, 255, 136, 0.3)',
           padding: '1rem',
         }}>
-          <a href="#hero" style={{ color: '#e0e0e0', textDecoration: 'none', fontFamily: 'Courier New, monospace' }} onMouseEnter={(e) => e.target.style.color = '#00ff88'} onMouseLeave={(e) => e.target.style.color = '#e0e0e0'}>Home</a>
-          <a href="#skills" style={{ color: '#e0e0e0', textDecoration: 'none', fontFamily: 'Courier New, monospace' }} onMouseEnter={(e) => e.target.style.color = '#00ff88'} onMouseLeave={(e) => e.target.style.color = '#e0e0e0'}>Skills</a>
-          <a href="#projects" style={{ color: '#e0e0e0', textDecoration: 'none', fontFamily: 'Courier New, monospace' }} onMouseEnter={(e) => e.target.style.color = '#00ff88'} onMouseLeave={(e) => e.target.style.color = '#e0e0e0'}>Projects</a>
-          <a href="#contact" style={{ color: '#e0e0e0', textDecoration: 'none', fontFamily: 'Courier New, monospace' }} onMouseEnter={(e) => e.target.style.color = '#00ff88'} onMouseLeave={(e) => e.target.style.color = '#e0e0e0'}>Contact</a>
+          <a href="#hero" style={{ color: '#e0e0e0', textDecoration: 'none', fontFamily: 'Courier New, monospace' }} onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.color = '#00ff88'} onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.color = '#e0e0e0'}>Home</a>
+          <a href="#skills" style={{ color: '#e0e0e0', textDecoration: 'none', fontFamily: 'Courier New, monospace' }} onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.color = '#00ff88'} onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.color = '#e0e0e0'}>Skills</a>
+          <a href="#projects" style={{ color: '#e0e0e0', textDecoration: 'none', fontFamily: 'Courier New, monospace' }} onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.color = '#00ff88'} onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.color = '#e0e0e0'}>Projects</a>
+          <a href="#contact" style={{ color: '#e0e0e0', textDecoration: 'none', fontFamily: 'Courier New, monospace' }} onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.color = '#00ff88'} onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.color = '#e0e0e0'}>Contact</a>
         </div>
       )}
     </nav>

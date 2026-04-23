@@ -97,14 +97,16 @@ export default function Hero() {
             cursor: 'pointer',
             transition: 'all 0.3s ease',
             overflow: 'hidden',
-          }} onMouseEnter={(e) => {
-            e.target.style.color = '#000';
-            e.target.style.boxShadow = '0 0 20px #00ff88';
-            e.target.style.background = '#00ff88';
-          }} onMouseLeave={(e) => {
-            e.target.style.color = '#00ff88';
-            e.target.style.boxShadow = 'none';
-            e.target.style.background = 'transparent';
+          }} onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
+            const target = e.currentTarget as HTMLButtonElement;
+            target.style.color = '#000';
+            target.style.boxShadow = '0 0 20px #00ff88';
+            target.style.background = '#00ff88';
+          }} onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
+            const target = e.currentTarget as HTMLButtonElement;
+            target.style.color = '#00ff88';
+            target.style.boxShadow = 'none';
+            target.style.background = 'transparent';
           }}>
             View Work
           </button>
@@ -118,14 +120,16 @@ export default function Hero() {
             cursor: 'pointer',
             transition: 'all 0.3s ease',
             overflow: 'hidden',
-          }} onMouseEnter={(e) => {
-            e.target.style.color = '#000';
-            e.target.style.boxShadow = '0 0 20px #0088ff';
-            e.target.style.background = '#0088ff';
-          }} onMouseLeave={(e) => {
-            e.target.style.color = '#0088ff';
-            e.target.style.boxShadow = 'none';
-            e.target.style.background = 'transparent';
+          }} onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
+            const target = e.currentTarget as HTMLButtonElement;
+            target.style.color = '#000';
+            target.style.boxShadow = '0 0 20px #0088ff';
+            target.style.background = '#0088ff';
+          }} onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
+            const target = e.currentTarget as HTMLButtonElement;
+            target.style.color = '#0088ff';
+            target.style.boxShadow = 'none';
+            target.style.background = 'transparent';
           }}>
             Get In Touch
           </button>
