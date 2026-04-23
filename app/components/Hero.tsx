@@ -2,35 +2,131 @@
 
 export default function Hero() {
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center pt-20 px-4 relative z-10">
-      <div className="text-center max-w-4xl">
-        <div className="mb-8">
-          <div className="w-32 h-32 mx-auto mb-8 rounded-full border-2 border-[#00ff88] p-1 neon-border float">
-            <div className="w-full h-full rounded-full bg-gradient-to-br from-[#00ff88] to-[#0088ff] flex items-center justify-center text-4xl font-bold">
+    <section id="hero" style={{
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingTop: '5rem',
+      paddingLeft: '1rem',
+      paddingRight: '1rem',
+      position: 'relative',
+      zIndex: 10,
+    }}>
+      <div style={{
+        textAlign: 'center',
+        maxWidth: '56rem',
+      }}>
+        <div style={{ marginBottom: '2rem' }}>
+          <div style={{
+            width: '128px',
+            height: '128px',
+            margin: '0 auto 2rem',
+            borderRadius: '50%',
+            border: '2px solid #00ff88',
+            padding: '4px',
+            animation: 'float 3s ease-in-out infinite',
+            boxShadow: '0 0 10px #00ff88, inset 0 0 10px rgba(0, 255, 136, 0.1)',
+          }}>
+            <div style={{
+              width: '100%',
+              height: '100%',
+              borderRadius: '50%',
+              background: 'linear-gradient(135deg, #00ff88 0%, #0088ff 100%)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '2rem',
+              fontWeight: 'bold',
+              color: '#000',
+            }}>
               M
             </div>
           </div>
         </div>
 
-        <h1 className="text-5xl md:text-7xl font-bold mb-4 glow-text">
+        <h1 style={{
+          fontSize: 'clamp(2rem, 10vw, 4rem)',
+          fontWeight: 'bold',
+          marginBottom: '1rem',
+          color: '#00ff88',
+          textShadow: '0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88',
+          animation: 'glow 2s ease-in-out infinite',
+        }}>
           CYBER PORTFOLIO
         </h1>
         
-        <div className="cyber-line"></div>
+        <div style={{
+          height: '1px',
+          background: 'linear-gradient(90deg, transparent, #00ff88, transparent)',
+          margin: '1.25rem 0',
+        }}></div>
 
-        <p className="text-xl md:text-2xl text-[#00ff88] mb-8 font-mono">
+        <p style={{
+          fontSize: 'clamp(1rem, 3vw, 1.5rem)',
+          color: '#00ff88',
+          marginBottom: '2rem',
+          fontFamily: 'Courier New, monospace',
+        }}>
           &gt; Welcome to the future
         </p>
 
-        <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
+        <p style={{
+          fontSize: '1.125rem',
+          color: '#a0a0a0',
+          marginBottom: '3rem',
+          maxWidth: '42rem',
+          margin: '0 auto 3rem',
+        }}>
           Full-stack developer crafting digital experiences with cutting-edge technology and futuristic design.
         </p>
 
-        <div className="flex gap-4 justify-center flex-wrap">
-          <button className="cyber-btn">
+        <div style={{
+          display: 'flex',
+          gap: '1rem',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+        }}>
+          <button style={{
+            position: 'relative',
+            padding: '12px 24px',
+            border: '2px solid #00ff88',
+            background: 'transparent',
+            color: '#00ff88',
+            fontFamily: 'Courier New, monospace',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            overflow: 'hidden',
+          }} onMouseEnter={(e) => {
+            e.target.style.color = '#000';
+            e.target.style.boxShadow = '0 0 20px #00ff88';
+            e.target.style.background = '#00ff88';
+          }} onMouseLeave={(e) => {
+            e.target.style.color = '#00ff88';
+            e.target.style.boxShadow = 'none';
+            e.target.style.background = 'transparent';
+          }}>
             View Work
           </button>
-          <button className="cyber-btn" style={{ borderColor: '#0088ff', color: '#0088ff' }}>
+          <button style={{
+            position: 'relative',
+            padding: '12px 24px',
+            border: '2px solid #0088ff',
+            background: 'transparent',
+            color: '#0088ff',
+            fontFamily: 'Courier New, monospace',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            overflow: 'hidden',
+          }} onMouseEnter={(e) => {
+            e.target.style.color = '#000';
+            e.target.style.boxShadow = '0 0 20px #0088ff';
+            e.target.style.background = '#0088ff';
+          }} onMouseLeave={(e) => {
+            e.target.style.color = '#0088ff';
+            e.target.style.boxShadow = 'none';
+            e.target.style.background = 'transparent';
+          }}>
             Get In Touch
           </button>
         </div>

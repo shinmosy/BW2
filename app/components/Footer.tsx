@@ -2,9 +2,25 @@
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[#00ff88]/30 py-8 px-4 bg-black/80 relative z-10">
-      <div className="max-w-6xl mx-auto text-center">
-        <p className="text-gray-400 font-mono">
+    <footer style={{
+      borderTop: '1px solid rgba(0, 255, 136, 0.3)',
+      paddingTop: '2rem',
+      paddingBottom: '2rem',
+      paddingLeft: '1rem',
+      paddingRight: '1rem',
+      backgroundColor: 'rgba(0, 0, 0, 0.8)',
+      position: 'relative',
+      zIndex: 10,
+    }}>
+      <div style={{
+        maxWidth: '1152px',
+        margin: '0 auto',
+        textAlign: 'center',
+      }}>
+        <p style={{
+          color: '#a0a0a0',
+          fontFamily: 'Courier New, monospace',
+        }}>
           &lt;/&gt; Built with Next.js + Tailwind CSS | © 2026 Cyber Portfolio
         </p>
       </div>

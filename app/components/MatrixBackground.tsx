@@ -13,7 +13,11 @@ export default function MatrixBackground() {
 
     for (let i = 0; i < 20; i++) {
       const char = document.createElement('div')
-      char.className = 'matrix-char'
+      char.style.position = 'absolute'
+      char.style.color = 'rgba(0, 255, 136, 0.1)'
+      char.style.fontSize = '14px'
+      char.style.fontWeight = 'bold'
+      char.style.animation = 'matrix-rain linear infinite'
       char.textContent = chars[Math.floor(Math.random() * chars.length)]
       char.style.left = Math.random() * 100 + '%'
       char.style.top = Math.random() * 100 + '%'
@@ -23,5 +27,16 @@ export default function MatrixBackground() {
     }
   }, [])
 
-  return <div ref={containerRef} className="matrix-bg"></div>
+  return (
+    <div ref={containerRef} style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      pointerEvents: 'none',
+      zIndex: 0,
+      overflow: 'hidden',
+    }}></div>
+  )
 }
