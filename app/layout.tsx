@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "BW2",
-  description: "Fresh portfolio build",
+  title: "Cyber Portfolio v2",
+  description: "Futuristic portfolio with cyber aesthetics",
 }
 
 export default function RootLayout({
@@ -12,7 +12,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <head>
+        <style>{`
+          @import url('./globals.css');
+        `}</style>
+      </head>
+      <body className="cyber-bg">
+        <div className="scanline"></div>
+        {children}
+      </body>
     </html>
   )
 }
