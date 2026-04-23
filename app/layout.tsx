@@ -23,12 +23,12 @@ export default function RootLayout({
             box-sizing: border-box;
           }
 
-          html {
-            scroll-behavior: smooth;
-          }
+  html {
+    scroll-behavior: smooth;
+    background: #0a0e27 !important;
+  }
 
   body {
-    background: #0a0e27 !important;
     color: #e0e0e0 !important;
     font-family: 'Courier New', monospace !important;
     overflow-x: hidden !important;
