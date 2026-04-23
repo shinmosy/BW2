@@ -2,10 +2,6 @@
 
 export function StyleProvider({ children }: { children: React.ReactNode }) {
   const styles = `
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
-
     * {
       margin: 0;
       padding: 0;
@@ -258,6 +254,28 @@ export function StyleProvider({ children }: { children: React.ReactNode }) {
       background: linear-gradient(90deg, transparent, #00ff88, transparent);
       margin: 20px 0;
     }
+
+    /* Utility classes */
+    .max-w-6xl { max-width: 1152px; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+    .flex { display: flex; }
+    .justify-between { justify-content: space-between; }
+    .items-center { align-items: center; }
+    .gap-8 { gap: 2rem; }
+    .text-2xl { font-size: 1.5rem; }
+    .font-bold { font-weight: bold; }
+    .fixed { position: fixed; }
+    .top-0 { top: 0; }
+    .w-full { width: 100%; }
+    .z-50 { z-index: 50; }
+    .border-b { border-bottom: 1px solid; }
+    .hidden { display: none; }
+    .md\\:flex { display: flex; }
+    .hover\\:text-\\[\\#00ff88\\]:hover { color: #00ff88; }
+    .transition { transition: all 0.3s ease; }
+    .font-mono { font-family: 'Courier New', monospace; }
   `
 
   return (
