@@ -13,9 +13,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <style>{`
-          @import url('./globals.css');
-        `}</style>
+        <link rel="stylesheet" href="/globals.css" />
       </head>
       <body className="cyber-bg">
         <div className="scanline"></div>
