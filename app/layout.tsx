@@ -1,9 +1,12 @@
+'use client'
+
 import type { Metadata } from "next"
 
-export const metadata: Metadata = {
-  title: "Cyber Portfolio v2",
-  description: "Futuristic portfolio with cyber aesthetics",
-}
+// Metadata harus di separate file untuk client components
+// export const metadata: Metadata = {
+//   title: "Cyber Portfolio v2",
+//   description: "Futuristic portfolio with cyber aesthetics",
+// }
 
 export default function RootLayout({
   children,
